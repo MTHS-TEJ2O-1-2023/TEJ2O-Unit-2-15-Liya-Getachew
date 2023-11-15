@@ -6,8 +6,8 @@
 */
 
 // variables
-let xValue: number = 0
-let loopCounter: number = 0
+let spriteXYCoordinate: number = 0
+let turnSprite: number = 0
 let sprite: game.LedSprite = null
 
 // setup
@@ -20,20 +20,19 @@ input.onButtonPressed(Button.A, function () {
   basic.clearScreen()
   sprite = game.createSprite(0, 0)
 
-  loopCounter = 0
-  while (loopCounter <= 3) {
-    
-    // reset xValue to 0
-    xValue = 0
-    while (xValue <= 4) {
+  turnSprite = 0
+  while (turnSprite <= 3) {
+    // reset spriteXYCoordinate to 0
+    spriteXYCoordinate = 0
+    while (spriteXYCoordinate <= 4) {
       // move sprite over once
       basic.pause(500)
       sprite.move(1)
-      xValue++
+      spriteXYCoordinate++
     }
     // turn sprite 90 degrees
     sprite.turn(Direction.Right, 90)
-    loopCounter++
+    turnSprite++
   }
 
   sprite.delete()
