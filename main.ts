@@ -22,13 +22,16 @@ input.onButtonPressed(Button.A, function () {
 
   loopCounter = 0
   while (loopCounter <= 3) {
-
+    
+    // reset xValue to 0
     xValue = 0
     while (xValue <= 4) {
+      // move sprite over once
       basic.pause(500)
       sprite.move(1)
       xValue++
     }
+    // turn sprite 90 degrees
     sprite.turn(Direction.Right, 90)
     loopCounter++
   }
