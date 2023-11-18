@@ -1,16 +1,15 @@
 """
 Created by: Liya G
 Created on: Nov 2023
-This module is a Micro:bit MicroPython program
+This module is a Micro:bit MicroPython program that moves a pixel around the edge.
 """
 
 from microbit import *
 
 
-# variables 
-sprite_xy_coordinate = 0
-turnSprite = 0
-set_pixel = None
+# variables
+y_axis_coordiante = 0
+x_axis_coordiante = 0
 
 # setup
 display.clear()
@@ -22,17 +21,46 @@ while True:
     if button_a.is_pressed():
         # setup
         display.clear()
-        turnSprite = 0
 
-        while turnSprite <= 3:
-            
-            sprite_xy_coordinate = 0
-            while sprite_xy_coordinate <= 4:
+        # reset variables
+        y_axis_coordiante = 0
+        x_axis_coordiante = 0
+
+        # loop that moves pixel down
+        while y_axis_coordiante <= 3:
+            # loop that moves pixel right
+            while x_axis_coordiante <= 3:
                 sleep(500)
 
-                display.set_pixel(turnSprite, sprite_xy_coordinate, 9)
+                display.set_pixel(x_axis_coordiante, y_axis_coordiante, 9)
                 sleep(500)
                 display.clear()
 
-                sprite_xy_coordinate += 1
-            turnSprite += 1
+                x_axis_coordiante += 1
+            sleep(500)
+            display.clear()
+            display.set_pixel(x_axis_coordiante, y_axis_coordiante, 9)
+            y_axis_coordiante += 1
+        # delete pixel after it reaches (4, 3)
+        display.clear()
+
+        # loop that moves pixel up
+        while y_axis_coordiante >= 0:
+            # loop that moves pixel left
+            while x_axis_coordiante >= 1:
+                sleep(500)
+
+                display.set_pixel(x_axis_coordiante, y_axis_coordiante, 9)
+                sleep(500)
+                display.clear()
+
+                x_axis_coordiante -= 1
+
+            sleep(500)
+            display.clear()
+            display.set_pixel(x_axis_coordiante, y_axis_coordiante, 9)
+            y_axis_coordiante -= 1
+        # when full turn is completed
+        sleep(500)
+        display.clear()
+        display.show(Image.DUCK)
